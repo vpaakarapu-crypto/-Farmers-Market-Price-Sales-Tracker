@@ -1,4 +1,3 @@
-# -Farmers-Market-Price-Sales-Tracker
 # Farmers' Market Price & Sales Tracker
 
 ## 📌 Project Overview
@@ -9,7 +8,9 @@ The application allows users to add products, view product details, search for p
 
 This project was developed as part of a **PSPJ (Programming for Social and Professional Development)** project to apply basic Java programming concepts to a real-world problem.
 
----
+## 📖 Abstract
+
+The **Farmers' Market Price & Sales Tracker** is a simple Java-based console application designed to help farmers and sellers manage their products, prices, stock, and sales. The system allows users to add products, view product details, search for products, record sales, and generate a sales report. It automatically calculates the quantity sold, remaining stock, total money earned, and average product price. The project uses basic Java concepts such as arrays, methods, data types, operators, loops, conditional statements, switch-case, and Scanner. The main aim of this project is to provide a simple and organized way to manage market sales while applying Java programming concepts to a real-world problem.
 
 ## 🎯 Objectives
 
@@ -19,25 +20,21 @@ This project was developed as part of a **PSPJ (Programming for Social and Profe
 * To automatically calculate the sale amount.
 * To update the remaining stock after a sale.
 * To generate a simple sales report.
-* To apply basic Java programming concepts in a practical application.
-
----
+* To apply basic Java programming concepts to a real-world problem.
 
 ## ⚙️ Features
 
 * Add a new product
-* View all available products
+* View all products
 * Search for a product
 * Record a sale
 * Automatically update remaining stock
-* Calculate total money earned
 * Calculate total quantity sold
+* Calculate total money earned
 * Calculate average product price
 * Find the most expensive product
 * Find the best-selling product
-* Validate user input
-
----
+* Check for invalid sales
 
 ## 🛠️ Technologies Used
 
@@ -47,11 +44,9 @@ This project was developed as part of a **PSPJ (Programming for Social and Profe
 * **Data Storage:** Arrays
 * **Application Type:** Console-based application
 
----
-
 ## 📚 Java Concepts Used
 
-This project demonstrates the following basic Java concepts:
+The project demonstrates the following basic Java concepts:
 
 * Classes
 * `main()` method
@@ -69,18 +64,16 @@ This project demonstrates the following basic Java concepts:
 * Arithmetic operators
 * Relational operators
 * Assignment operators
-* `if-else` statements
-* `else-if` statements
-* `for` loops
-* `while` loops
+* `if-else`
+* `else-if`
+* `for` loop
+* `do-while` loop
 * `switch-case`
 * `break`
 * `return`
-* String methods
+* String comparison
 * Searching
 * Input validation
-
----
 
 ## 📋 Menu Options
 
@@ -95,8 +88,6 @@ The application provides the following menu:
 6. Exit
 ```
 
----
-
 ## 🔄 How the System Works
 
 ### 1. Add Product
@@ -107,11 +98,11 @@ The user enters:
 * Price per kg
 * Available stock in kg
 
-The product information is stored in arrays.
+The information is stored using arrays.
 
 ### 2. View Products
 
-The system displays all added products along with:
+The system displays:
 
 * Product name
 * Price
@@ -120,25 +111,27 @@ The system displays all added products along with:
 
 ### 3. Search Product
 
-The user enters a product name. The system searches the product list and displays its details if the product is found.
+The user enters a product name. The system searches the product list and displays the product details if it is found.
 
 ### 4. Record Sale
 
 The user enters the product name and quantity sold.
 
-The system:
+The system checks whether the product exists and whether enough stock is available.
 
-* Checks whether the product exists.
-* Checks whether enough stock is available.
-* Calculates the sale amount.
-* Reduces the available stock.
-* Increases the quantity sold.
+The sale amount is calculated using:
 
 **Sale Amount = Price × Quantity Sold**
 
+After the sale:
+
+* Available stock is reduced.
+* Quantity sold is increased.
+* Sale amount is displayed.
+
 ### 5. Sales Report
 
-The system calculates and displays:
+The system displays:
 
 * Number of products
 * Total quantity sold
@@ -147,11 +140,9 @@ The system calculates and displays:
 * Most expensive product
 * Best-selling product
 
----
-
 ## 🗂️ Data Stored
 
-The application uses four arrays:
+The program uses four arrays:
 
 | Array      | Purpose                |
 | ---------- | ---------------------- |
@@ -160,7 +151,7 @@ The application uses four arrays:
 | `stock[]`  | Stores available stock |
 | `sold[]`   | Stores quantity sold   |
 
-The same array index represents the same product.
+The same index represents the same product.
 
 For example:
 
@@ -171,8 +162,6 @@ stock[0]  → 50
 sold[0]   → 10
 ```
 
----
-
 ## ▶️ How to Run
 
 ### Step 1
@@ -181,13 +170,9 @@ Install Java on your computer.
 
 ### Step 2
 
-Clone or download this repository.
+Open the project in Visual Studio Code or another Java IDE.
 
 ### Step 3
-
-Open the project in a Java-compatible IDE such as Visual Studio Code.
-
-### Step 4
 
 Compile the program:
 
@@ -195,7 +180,7 @@ Compile the program:
 javac FarmersMarketTracker.java
 ```
 
-### Step 5
+### Step 4
 
 Run the program:
 
@@ -203,17 +188,12 @@ Run the program:
 java FarmersMarketTracker
 ```
 
----
-
 ## 📸 Sample Output
 
 The program displays a menu like:
 
 ```text
-======================================
-     FARMERS' MARKET TRACKER
-======================================
-
+===== FARMERS' MARKET TRACKER =====
 1. Add Product
 2. View Products
 3. Search Product
@@ -222,47 +202,41 @@ The program displays a menu like:
 6. Exit
 ```
 
-Screenshots of the program execution are included in the project presentation/documentation.
-
----
+Screenshots of the program execution can be added to the project documentation.
 
 ## ✅ Advantages
 
-* Simple and easy to use.
+* Easy to use and understand.
 * Helps manage product information.
 * Makes product searching easier.
 * Automatically updates stock after a sale.
 * Reduces manual calculations.
-* Provides a simple sales summary.
+* Provides a simple sales report.
+* Helps track the quantity sold.
 * Demonstrates basic Java concepts through a real-world application.
 
----
+## 🔮 Future Work
 
-## 🔮 Future Scope
+The project can be improved in the future by adding:
 
-The project can be further improved by:
+* Permanent data storage using files or a database.
+* A feature to update product prices.
+* Product categories.
+* Daily, weekly, and monthly sales reports.
+* A graphical user interface (GUI).
+* Login and user authentication.
+* Charts and graphs for sales analysis.
+* More advanced inventory management features.
 
-* Adding permanent data storage using files or a database.
-* Adding a product price update feature.
-* Adding product categories.
-* Generating daily, weekly, and monthly reports.
-* Adding a graphical user interface.
-* Adding login and user authentication.
-* Adding charts and graphs for sales analysis.
-* Adding more advanced inventory management features.
+## 📌 Conclusion
 
----
+The **Farmers' Market Price & Sales Tracker** provides a simple way to manage products, prices, stock, and sales. The application performs important tasks such as adding products, searching for products, recording sales, updating stock, and generating sales reports.
+
+The project helped in applying basic Java concepts such as arrays, methods, loops, operators, conditional statements, switch-case, data types, and user input to a practical real-world problem. Overall, the project provides a simple and organised approach to tracking farmers' market products and sales.
 
 ## 👥 Project Team
 
 **Project:** Farmers' Market Price & Sales Tracker
-
 **Course:** PSPJ
-
-**Language:** Java
-
----
-
-## 📄 Conclusion
-
-The Farmers' Market Price & Sales Tracker provides a simple way to manage products, stock, prices, and sales. It applies basic Java programming concepts to solve a practical real-world problem. The project also provides an opportunity to understand how arrays, methods, loops, operators, conditions, and user input can be combined to create a functional application.
+**Programming Language:** Java
+**Application Type:** Console-based Application
