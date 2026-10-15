@@ -1,242 +1,250 @@
 # Farmers' Market Price & Sales Tracker
 
-## 📌 Project Overview
+A console-based Java application that helps a small farmers' market seller keep track of products, prices, stock and daily sales. Product data is saved to a text file, so nothing is lost when the program is closed.
 
-The **Farmers' Market Price & Sales Tracker** is a simple Java-based console application designed to help farmers and sellers manage their products, prices, stock, and sales.
+This project was built as part of my B.Tech coursework to practise Object-Oriented Programming, Exception Handling, Strings, Collections and File I/O in Java.
 
-The application allows users to add products, view product details, search for products, record sales, and generate a sales report.
+---
 
-This project was developed as part of a **PSPJ (Programming for Social and Professional Development)** project to apply basic Java programming concepts to a real-world problem.
+## Table of Contents
 
-## 📖 Abstract
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Java Concepts Used](#java-concepts-used)
+- [Requirements](#requirements)
+- [How to Run](#how-to-run)
+- [Menu Options](#menu-options)
+- [Sample Run](#sample-run)
+- [How It Works](#how-it-works)
+- [Data File Format](#data-file-format)
+- [Input Validation and Error Handling](#input-validation-and-error-handling)
+- [Possible Improvements](#possible-improvements)
 
-The **Farmers' Market Price & Sales Tracker** is a simple Java-based console application designed to help farmers and sellers manage their products, prices, stock, and sales. The system allows users to add products, view product details, search for products, record sales, and generate a sales report. It automatically calculates the quantity sold, remaining stock, total money earned, and average product price. The project uses basic Java concepts such as arrays, methods, data types, operators, loops, conditional statements, switch-case, and Scanner. The main aim of this project is to provide a simple and organized way to manage market sales while applying Java programming concepts to a real-world problem.
+---
 
-## 🎯 Objectives
+## Features
 
-* To maintain product information in an organized way.
-* To keep track of product prices and available stock.
-* To record product sales.
-* To automatically calculate the sale amount.
-* To update the remaining stock after a sale.
-* To generate a simple sales report.
-* To apply basic Java programming concepts to a real-world problem.
+- Add products with price per kg and available stock
+- View all products with their price, remaining stock and quantity sold
+- Search for a product by name (not case-sensitive)
+- Record a sale, with automatic stock and sales updates
+- Show a sales report with totals and averages
+- Save all data to a file on exit and load it automatically on startup
+- Handle invalid input, missing files and badly formatted records without crashing
 
-## ⚙️ Features
+---
 
-* Add a new product
-* View all products
-* Search for a product
-* Record a sale
-* Automatically update remaining stock
-* Calculate total quantity sold
-* Calculate total money earned
-* Calculate average product price
-* Find the most expensive product
-* Find the best-selling product
-* Check for invalid sales
+## Project Structure
 
-## 🛠️ Technologies Used
-
-* **Programming Language:** Java
-* **IDE:** Visual Studio Code / Any Java IDE
-* **Input:** Java Scanner
-* **Data Storage:** Arrays
-* **Application Type:** Console-based application
-
-## 📚 Java Concepts Used
-
-The project demonstrates the following basic Java concepts:
-
-* Classes
-* `main()` method
-* Variables
-* Data types
-
-  * `int`
-  * `double`
-  * `String`
-  * `boolean`
-* Arrays
-* Methods
-* Method calling
-* Scanner for user input
-* Arithmetic operators
-* Relational operators
-* Assignment operators
-* `if-else`
-* `else-if`
-* `for` loop
-* `do-while` loop
-* `switch-case`
-* `break`
-* `return`
-* String comparison
-* Searching
-* Input validation
-
-## 📋 Menu Options
-
-The application provides the following menu:
-
-```text
-1. Add Product
-2. View Products
-3. Search Product
-4. Record Sale
-5. Sales Report
-6. Exit
+```
+FarmersMarketTracker/
+├── FarmersMarketTracker.java   # Source code (all classes)
+├── README.md                   # Project documentation
+└── products.txt                # Created automatically when you save and exit
 ```
 
-## 🔄 How the System Works
+The source file contains three classes:
 
-### 1. Add Product
+| Class | Purpose |
+|-------|---------|
+| `InsufficientStockException` | Custom checked exception thrown when a sale is larger than the available stock |
+| `Product` | Stores the name, price, stock and sold quantity of one product, and handles selling |
+| `FarmersMarketTracker` | Main class with the menu, user input and all operations on the product list |
 
-The user enters:
+---
 
-* Product name
-* Price per kg
-* Available stock in kg
+## Java Concepts Used
 
-The information is stored using arrays.
+**Object-Oriented Programming**
+- Classes and objects
+- Encapsulation (private fields with getter methods)
+- Constructor and the `this` keyword
+- `toString()` method with `@Override`
 
-### 2. View Products
+**Exception Handling**
+- `try` and `catch`
+- `throw` and `throws`
+- Checked exception
+- Custom exception (`InsufficientStockException`)
 
-The system displays:
+**Strings**
+- `trim()`, `replace()`, `equalsIgnoreCase()`, `split()`, `isEmpty()`
 
-* Product name
-* Price
-* Available stock
-* Quantity sold
+**Collections**
+- `ArrayList`
+- For-each loop
 
-### 3. Search Product
+**File I/O**
+- `Path` and `Files`
+- `BufferedReader` and `BufferedWriter`
+- Try-with-resources
+- Handling a missing file
+- Handling malformed records
 
-The user enters a product name. The system searches the product list and displays the product details if it is found.
+---
 
-### 4. Record Sale
+## Requirements
 
-The user enters the product name and quantity sold.
+- JDK 11 or higher (the code uses `Path.of()`)
+- A terminal or command prompt
 
-The system checks whether the product exists and whether enough stock is available.
+Check your Java version with:
 
-The sale amount is calculated using:
-
-**Sale Amount = Price × Quantity Sold**
-
-After the sale:
-
-* Available stock is reduced.
-* Quantity sold is increased.
-* Sale amount is displayed.
-
-### 5. Sales Report
-
-The system displays:
-
-* Number of products
-* Total quantity sold
-* Total money earned
-* Average product price
-* Most expensive product
-* Best-selling product
-
-## 🗂️ Data Stored
-
-The program uses four arrays:
-
-| Array      | Purpose                |
-| ---------- | ---------------------- |
-| `names[]`  | Stores product names   |
-| `prices[]` | Stores product prices  |
-| `stock[]`  | Stores available stock |
-| `sold[]`   | Stores quantity sold   |
-
-The same index represents the same product.
-
-For example:
-
-```text
-names[0]  → Tomato
-prices[0] → 40
-stock[0]  → 50
-sold[0]   → 10
+```
+java -version
 ```
 
-## ▶️ How to Run
+---
 
-### Step 1
+## How to Run
 
-Install Java on your computer.
+1. Clone or download this repository.
+2. Open a terminal in the project folder.
+3. Compile the program:
 
-### Step 2
-
-Open the project in Visual Studio Code or another Java IDE.
-
-### Step 3
-
-Compile the program:
-
-```bash
+```
 javac FarmersMarketTracker.java
 ```
 
-### Step 4
+4. Run it:
 
-Run the program:
-
-```bash
+```
 java FarmersMarketTracker
 ```
 
-## 📸 Sample Output
+The program creates `products.txt` in the folder you run it from.
 
-The program displays a menu like:
+---
 
-```text
-===== FARMERS' MARKET TRACKER =====
+## Menu Options
+
+```
+===== FARMERS MARKET TRACKER =====
 1. Add Product
 2. View Products
 3. Search Product
 4. Record Sale
 5. Sales Report
-6. Exit
+6. Save and Exit
 ```
 
-Screenshots of the program execution can be added to the project documentation.
+| Option | What it does |
+|--------|--------------|
+| 1. Add Product | Asks for the name, price per kg and stock in kg, then adds the product |
+| 2. View Products | Lists every product with price, stock and quantity sold |
+| 3. Search Product | Finds a product by name and shows its details |
+| 4. Record Sale | Asks for a product and the quantity sold, reduces stock and shows the amount |
+| 5. Sales Report | Shows overall sales figures (see below) |
+| 6. Save and Exit | Writes all products to `products.txt` and closes the program |
 
-## ✅ Advantages
+**Important:** choose option 6 to exit. Data is saved only when you exit this way.
 
-* Easy to use and understand.
-* Helps manage product information.
-* Makes product searching easier.
-* Automatically updates stock after a sale.
-* Reduces manual calculations.
-* Provides a simple sales report.
-* Helps track the quantity sold.
-* Demonstrates basic Java concepts through a real-world application.
+---
 
-## 🔮 Future Work
+## Sample Run
 
-The project can be improved in the future by adding:
+```
+No saved data found. Starting fresh.
 
-* Permanent data storage using files or a database.
-* A feature to update product prices.
-* Product categories.
-* Daily, weekly, and monthly sales reports.
-* A graphical user interface (GUI).
-* Login and user authentication.
-* Charts and graphs for sales analysis.
-* More advanced inventory management features.
+===== FARMERS MARKET TRACKER =====
+1. Add Product
+2. View Products
+3. Search Product
+4. Record Sale
+5. Sales Report
+6. Save and Exit
+Enter your choice: 1
+Enter product name: Tomato
+Enter price per kg: 40
+Enter stock in kg: 100
+Product added successfully.
 
-## 📌 Conclusion
+Enter your choice: 4
+Enter product name: tomato
+Available stock: 100.0 kg
+Enter quantity sold: 10
+Sale recorded successfully.
+Amount: Rs.400.0
+Remaining stock: 90.0 kg
 
-The **Farmers' Market Price & Sales Tracker** provides a simple way to manage products, prices, stock, and sales. The application performs important tasks such as adding products, searching for products, recording sales, updating stock, and generating sales reports.
+Enter your choice: 4
+Enter product name: tomato
+Available stock: 90.0 kg
+Enter quantity sold: 500
+Not enough stock.
 
-The project helped in applying basic Java concepts such as arrays, methods, loops, operators, conditional statements, switch-case, data types, and user input to a practical real-world problem. Overall, the project provides a simple and organised approach to tracking farmers' market products and sales.
+Enter your choice: 5
 
-## 👥 Project Team
+===== SALES REPORT =====
+Number of products: 1
+Total quantity sold: 10.0 kg
+Total money earned: Rs.400.0
+Average price: Rs.40.0
+Most expensive product: Tomato
+Best selling product: Tomato
+```
 
-**Project:** Farmers' Market Price & Sales Tracker
-**Course:** PSPJ
-**Programming Language:** Java
-**Application Type:** Console-based Application
+---
+
+## How It Works
+
+**Storing products.** Each product is an object of the `Product` class. All products are kept in an `ArrayList<Product>`, and a for-each loop is used to go through them.
+
+**Finding a product.** The `findProduct()` method loops through the list and compares names using `equalsIgnoreCase()`, so `Tomato`, `tomato` and `TOMATO` all match.
+
+**Recording a sale.** The `sell()` method in `Product` checks the quantity against the stock. If there is not enough stock, it throws `InsufficientStockException`. The main program catches this exception and shows a message instead of crashing.
+
+**Sales report.** The report loops through all products to calculate:
+- Total quantity sold
+- Total money earned (quantity sold × price for each product)
+- Average price
+- Most expensive product
+- Best-selling product (shows "No sales yet" if nothing has been sold)
+
+**Saving and loading.** On exit, each product is written as one line to `products.txt` using `BufferedWriter`. On startup, the file is read line by line using `BufferedReader` and the products are added back to the list.
+
+---
+
+## Data File Format
+
+Each line of `products.txt` stores one product, separated by commas:
+
+```
+name,price,stock,sold
+```
+
+Example:
+
+```
+Tomato,40.0,90.0,10.0
+Onion,30.0,50.0,0.0
+Potato,25.0,200.0,35.5
+```
+
+Because commas are used as separators, any comma in a product name is replaced with a space when the product is added.
+
+---
+
+## Input Validation and Error Handling
+
+| Situation | What the program does |
+|-----------|-----------------------|
+| User types letters where a number is expected | Shows a message and asks again |
+| Product name is empty | Rejects the product |
+| Price is zero or negative, or stock is negative | Rejects the product |
+| Product to search or sell is not found | Shows "Product not found." |
+| Quantity sold is zero or negative | Shows "Invalid quantity." |
+| Quantity sold is more than the stock | Shows "Not enough stock." (custom exception) |
+| `products.txt` does not exist | Starts with an empty list |
+| A line in `products.txt` is incorrectly formatted | Skips that line and shows a message |
+| File cannot be read or written | Shows an error message |
+
+---
+
+## Possible Improvements
+
+- Prevent adding two products with the same name
+- Add options to update the price or restock a product
+- Add an option to delete a product
+- Sort products by name, price or quantity sold
+- Add a simple graphical interface
